@@ -1,0 +1,11 @@
+APP_NAME="movies-festival"
+APP_SECRET="rahasia"
+PORT=8081
+GRPC_PORT=7001
+
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=movie_festival
+DB_USER=root
+DB_PASSWORD=
+UMS_GRPC_HOST=:7000
