@@ -33,4 +33,5 @@ type IMovieAPI interface {
 	DataPick(c *gin.Context)
 	DataLike(c *gin.Context)
 	DataDislike(c *gin.Context)
+	GetTemplate(c *gin.Context)
 }

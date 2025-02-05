@@ -41,7 +41,7 @@ func (r *MovieRepo) GetAll(ctx context.Context, objComp models.ComponentServerSi
 	if isWhere != "" {
 		query.Where(isWhere)
 	}
-	if err := query.Order(isOrder).Limit(limit).Find(&resp).Error; err != nil {
+	if err := query.Debug().Order(isOrder).Limit(limit).Offset(objComp.Skip).Find(&resp).Error; err != nil {
 		return resp, err
 	}
 

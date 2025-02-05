@@ -31,10 +31,11 @@ func ServeHTTP() {
 	walletV1.GET("/", d.MiddlewareValidateToken, d.WalletAPI.GetAll)
 	walletV1.POST("/", d.MiddlewareValidateToken, d.WalletAPI.Create)
 	walletV1.PUT("/:id", d.MiddlewareValidateToken, d.WalletAPI.Update)
-	walletV1.POST("/upload", d.MiddlewareValidateToken, d.WalletAPI.UploadExcel)
+	walletV1.POST("/import", d.MiddlewareValidateToken, d.WalletAPI.UploadExcel)
 	walletV1.PATCH("/pick/:id", d.MiddlewareValidateToken, d.WalletAPI.DataPick)
 	walletV1.PATCH("/like/:id", d.MiddlewareValidateToken, d.WalletAPI.DataLike)
 	walletV1.PATCH("/dislike/:id", d.MiddlewareValidateToken, d.WalletAPI.DataDislike)
+	walletV1.GET("/template", d.WalletAPI.GetTemplate)
 
 	err := r.Run(":" + helpers.GetEnv("PORT", ""))
 	if err != nil {

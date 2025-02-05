@@ -110,7 +110,7 @@ type MetaResponse struct {
 	Code         int    `json:"int"`
 	Status       string `json:"status"`
 	ResponseTime string `json:"response_time"`
-	CurrentPage  int    `json:"current_page"`
-	TotalPage    int64  `json:"total_page"`
-	TotalData    int64  `json:"total_data"`
+	CurrentPage  int64  `json:"current_page"`
+	TotalPage    int64  `json:"totalPages"`
+	TotalData    int64  `json:"totalData"`
 }

@@ -87,7 +87,7 @@ func (api *MovieAPI) GetAll(c *gin.Context) {
 		return
 	}
 	response := helpers.APIResponseView("Succesfully Get Data!", http.StatusOK, "Succesfully", total, objComponent.Limit, obj)
-	response.Meta.CurrentPage = int(total)
+	response.Meta.CurrentPage = (int64(objComponent.Skip) / int64(objComponent.Limit)) + 1
 	c.JSON(http.StatusOK, response)
 }
 
@@ -184,4 +184,16 @@ func (api *MovieAPI) DataDislike(c *gin.Context) {
 	}
 
 	helpers.SendResponseHTTP(c, http.StatusOK, constants.SuccessMessage, nil)
+}
+
+func (api *MovieAPI) GetTemplate(c *gin.Context) {
+	var (
+		pathFile = "./uploads/movies.xlsx"
+		fileName = "movies.xlsx"
+	)
+
+	c.Header("Content-Description", "File Transfer")
+	c.Header("Content-Disposition", "attachment; filename="+fileName)
+	c.Header("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+	c.File(pathFile)
 }
